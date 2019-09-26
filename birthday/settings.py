@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cron',
+    'wishyou',
 ]
-
+CRON_CLASSES = [
+    "wishyou.cron_job.MyCronJob",
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -69,7 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'birthday.wsgi.application'
 
-
+ALLOW_PARALLEL_RUNS = True
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
