@@ -17,15 +17,16 @@ from wishyou.models import People
 class Home(View):
     def get(self, request):
         data = {'name': 'Mayur'}
-        people = People.objects.latest('id')
+        people = People.objects.filter(email='q').get()
         a = json.loads(people.images)
-        i = a['0']
-        image = np.asarray(i)
-        success, encoded_image = cv2.imencode('.png', image)
-        content2 = encoded_image.tobytes()
-        mayur_encoded_string = base64.b64encode(content2)
-        data['image'] = mayur_encoded_string
-        print(data['image'])
+        imaegs = []
+        for val in a.values():
+            image = np.asarray(val)
+            success, encoded_image = cv2.imencode('.jpg', image)
+            image = encoded_image.tobytes()
+            image = base64.b64encode(image)
+            imaegs.append(str(image)[2:-1])
+        data['image'] = imaegs
         return render(request, 'wishyou/index.html', {'data':data})
 
 

@@ -9,8 +9,10 @@
     </head>
     <body>
         <h1>Happy Birthday</h1>
-        <h3>{{ name }}</h3>
-        <img src="data:image/png;base64,"{{ data.image }}>
+        <h3>{{ data.name }}</h3>
+        {% for image in data.image %}
+            <img src="data:image/jpeg;base64, {{ image }}">
+        {% endfor %}
         <canvas id="birthday"></canvas>
         <script src="{% static 'js/script.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
