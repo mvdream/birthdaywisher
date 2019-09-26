@@ -11,11 +11,11 @@ class PeopleForm(forms.ModelForm):
     #                                'class': 'form-control datetimepicker-input',
     #                                'data-target': '#datetimepicker1'
     #                            }))
-    image = forms.ImageField(label="Image:", widget=forms.FileInput(attrs={'multiple': True}))
+    image = forms.ImageField(label="Image:", required=False, widget=forms.FileInput(attrs={'multiple': True}))
 
     class Meta:
         model = People
-        fields = ['name', 'email', 'birthday']
+        fields = ['name', 'email', 'contact', 'birthday', 'your_name', 'your_email', 'your_contact']
         widgets = {
-            'birthday': forms.DateInput(attrs={'id':"datepicker",'required': True, 'readonly':True}),
+            'birthday': forms.DateInput(attrs={'id': "datepicker", 'required': True, 'readonly': True}),
         }
